@@ -17,3 +17,10 @@ Scenario: Remoção de artista com nome errado
     And O artista “Carlinhos Bala” com id “15987” está cadastrado no sistema
 	When Pesquisar o artista com nome "Charlinhos Bala"
 	Then Posso ver na tela uma mensagem informando “o artista não existe”
+
+Scenario: Remoção de artista com id errado
+	Given Eu estou logado como usuário “administrador” e senha “1234”
+	And Eu estou na página de “lista de artistas”
+    And O artista “Carlinhos Bala” com id “15987” está cadastrado no sistema
+	When Pesquisar o artista com id "15989"
+	Then Posso ver na tela uma mensagem informando “o artista não existe”
