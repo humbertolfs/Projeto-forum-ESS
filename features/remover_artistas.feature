@@ -31,3 +31,12 @@ Scenario: Remoção de artista que não existe
     And O artista “Carlinhos Bala” com id “15987” não está cadastrado no sistema
 	When Pesquisar o artista
 	Then Posso ver na tela uma mensagem informando “o artista não existe”
+
+Scenario: Remoção de artista cancelada
+	Given Eu estou logado como usuário “administrador” e senha “1234”
+	And Eu estou na página de “lista de artistas”
+    And O artista “Carlinhos Bala” com id “15987” não está cadastrado no sistema
+	When Pesquisar o artista
+	And Clico para remover o artista
+	And Cancelo
+	Then Continuo na página de “lista de artistas”
